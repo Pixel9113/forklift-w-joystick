@@ -26,6 +26,10 @@ basic.forever(function () {
         radio.sendNumber(6)
     } else if (joystickbit.getButton(joystickbit.JoystickBitPin.P14)) {
         radio.sendNumber(7)
+    } else if (joystickbit.getRockerValue(joystickbit.rockerType.X) > 800) {
+        radio.sendNumber(3)
+    } else if (joystickbit.getRockerValue(joystickbit.rockerType.X) < 200) {
+        radio.sendNumber(4)
     } else {
         radio.sendNumber(0)
     }
@@ -36,6 +40,12 @@ basic.forever(function () {
     }
     if (action == 2) {
         backward()
+    }
+    if (action == 3) {
+        wuKong.setAllMotor(-20, 20)
+    }
+    if (action == 4) {
+        wuKong.setAllMotor(20, -20)
     }
     if (action == 6) {
         forkUp()
